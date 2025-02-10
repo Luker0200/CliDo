@@ -15,7 +15,8 @@ int main() {
         std::cout << "1. View Daily Goals\t\t2. Mark Entry Complete\t\t3. Remove Entry\t\t4. Exit\n";
 
             std::cin >> choice;
-
+            // Switch Statement to Call Functions Based on User Input
+            // -------------------------------------------------------
             switch (choice) {
                 case 1:
                     viewGoals();
