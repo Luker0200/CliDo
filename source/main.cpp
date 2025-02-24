@@ -1,33 +1,40 @@
+// Library Imports
 #include <iostream>
-#include "program_functions.cpp"
+
+// File Imports
+#include "task-functions.cpp"
+#include "virtual_terminal_process.cpp"
+
+//=================================================================================================
 
 int main() {
-    std::cout << "Welcome to CliDo - A Digital Second Brain.\n\n";
-    
-    // Main Menu
-    int choice;
-        std::cout << "--- Input '1 - 4' to Operate This Program. \n\n";
-        std::cout << "1. Setup Program\t\t2. View Program\t\t3. Display Current Features\t\t4. Exit\n";
 
-            std::cin >> choice;
-            // Switch Statement to Direct Program to @Functions Based on User Input
-            // ---------------------------------------------------------
+    enableVirtualTerminalProcessing(); 
+    loadTasks();
+
+    std::cout << '\n' << '\n';
+    std::cout << "\033[38;5;214mWelcome to Clido - A Digital Second Brain.\033[0m\n";
+
+    int choice;
+        do {
+            cout << "\n\033[1;34mControl Panel\033[0m\n";
+            cout << "1. Add Task\n";
+            cout << "2. View Tasks\n";
+            cout << "3. Mark Task as Completed\n";
+            cout << "4. Delete Task\n";
+            cout << "5. Exit\n";
+            cout << "Choose an option: ";
+            cin >> choice;
+            
             switch (choice) {
-                case 1:
-                    setupProgram();
-                    break;
-                case 2:
-                    viewProgram();
-                    break;
-                case 3:
-                    displayFeatures();
-                    break;
-                case 4:
-                    exitProgram();
-                    break;
-                default:
-                    std::cout << "Invalid Numerical Entry. Please Try Again.\n";
-                    break;
+                case 1: addTask(); break;
+                case 2: viewTasks(); break;
+                case 3: markCompleted(); break;
+                case 4: deleteTask(); break;
+                case 5: cout << "Exiting...\n"; break;
+                default: cout << "Invalid option!\n";
             }
+        } while (choice != 5);
+    
     return 0;
 }
